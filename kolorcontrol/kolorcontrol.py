@@ -161,6 +161,11 @@ class KCMainWindow(Ui_MainWindow):
         self.spinB_G.setValue(1.0)
         self.xcalib_enabled = True
         textcommand = reset_xcalib(self.spinScreen.value())
-        self.ax.clear()
+        
+        try:
+            self.ax.clear()
+        except AttributeError:
+            pass
+        
         self.canvas.draw()
         self.textBrowser.setText(textcommand)
